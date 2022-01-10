@@ -44,31 +44,31 @@ func CheckWordUsage(input string) {
 		result[string(v)] = count
 	}
 
-	p := make(PairList, len(result))
+	pairListData := make(PairList, len(result))
 	i := 0
 
 	/*populating data in the PairList type variable
 	and incrementing the value of array index */
 	for k, v := range result {
-		p[i] = Pair{k, v}
+		pairListData[i] = Pair{k, v}
 		i++
 	}
 
 	//Sorting data in ascending order
-	sort.Sort(p)
+	sort.Sort(pairListData)
 
 	fmt.Printf("Top 10 most used words : \n")
 
-	l := len(p)
+	l := len(pairListData)
 	var limit int
 
 	//limiting loop constraint to run max 10 times
 	if l > 10 {
-		limit = len(p) - 10
+		limit = len(pairListData) - 10
 	}
 
 	//printing the required result. Looping in reverse order to print words with max no. of usage
 	for i := l - 1; i >= limit; i-- {
-		fmt.Println(p[i].Key, p[i].Value)
+		fmt.Println(pairListData[i].Key, pairListData[i].Value)
 	}
 }
